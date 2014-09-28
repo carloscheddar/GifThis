@@ -1,13 +1,13 @@
 $(document).ready(function(){
   // Open a new tab if the user clicks on an image
-  $('body').on('click', 'a', function(e){
+  $('body').on('click', 'ul a', function(e){
     $('#copy').val(e.target.src);
     $('#copy').focus();
     $('#copy').select();
     document.execCommand('Copy');
-    var popup = "Copied!";
-    popup.fadeIn();
-    popup.fadeOut();
+
+    $('#send-to-friend').css('display', 'block');
+
   });
 
   $(".random").on('click',function(){
@@ -21,7 +21,7 @@ $(document).ready(function(){
     });
   });
   // Get the search value on submit
-  $("form").submit(function(e){
+  $("#search").submit(function(e){
     e.preventDefault();
 
     $('.loading').css('display', 'block');
@@ -50,4 +50,27 @@ $(document).ready(function(){
       });
     });
   });
+
+  var sendgrid = function (to, from, message) {
+    var payload = {
+      'to': to,
+      'from': from,
+      'html': message,
+      'subject': "A friend has sent you a gif from Gif Me!",
+      'api_key': Config.password,
+      'api_user': Config.username
+    };
+
+    var http = new XMLHttpRequest();
+    http.open('POST','https://api.sendgrid.com/api/mail.send.json', false);
+    http.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    query = [];
+    for (var key in payload) {
+      query.push(encodeURIComponent(key) + '=' + encodeURIComponent(payload[key]));
+    }
+    console.log(http.send(query.join('&')));
+
+    };
 });
+
+
