@@ -16,7 +16,7 @@ So then came the idea of making an extention where you can search for a gif and 
 ## Why use Giphy?
 
 ![](http://media1.giphy.com/media/E7yX6ZvDlYmEE/giphy.gif)<br>
-![](https://puppetlabs.com/sites/default/files/0aBiw.gif)<br>
+![](http://i.imgur.com/qO8Mjum.gif)<br>
 Giphy offers an easy way to search for gifs and also offers a simple to use API.
 
 ### The API calls we used
