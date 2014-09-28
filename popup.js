@@ -5,6 +5,9 @@ $(document).ready(function(){
     $('#copy').focus();
     $('#copy').select();
     document.execCommand('Copy');
+    var popup = "Copied!";
+    popup.fadeIn();
+    popup.fadeOut();
   });
 
   $(".random").on('click',function(){
