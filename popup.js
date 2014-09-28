@@ -11,6 +11,8 @@ $(document).ready(function(){
   $("form").submit(function(e){
     e.preventDefault();
 
+    $('.loading').css('display', 'block');
+
     // Empty the list on each request
     $('.gifs').empty();
 
@@ -20,6 +22,9 @@ $(document).ready(function(){
     // Get the gifs from the giphy api
     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ query + "&api_key=dc6zaTOxFJmzC&limit="+ limit);
     xhr.done(function(data) {
+
+      $('.loading').css('display', 'none');
+
       //Return if result is empty
       if (data.pagination.count === 0) {
         $(".gifs").append('<li><p>No gif found.</p></li>');
