@@ -15,7 +15,7 @@ So then came the idea of making an extention where you can search for a gif and 
 
 ## Why use Giphy?
 
-![](http://media1.giphy.com/media/E7yX6ZvDlYmEE/giphy.gif)
+![](http://media1.giphy.com/media/E7yX6ZvDlYmEE/giphy.gif)<br>
 ![](http://media.giphy.com/media/8VSaCyIdcnbuE/giphy-tumblr.gif)
 Giphy offers an easy way to search for gifs and also offers a simple to use API.
 
