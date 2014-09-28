@@ -12,7 +12,7 @@ li img{
 }
 
 .giphy {
-	
+	float: right;
 	bottom: 0px;
 	right: 0px;
 	width: 30px;
