@@ -3,26 +3,40 @@
   <head>
     <title>Getting Started Extension's Popup</title>
     <link rel="stylesheet" type="text/css" href="gifMe.css">
+    <script src="config.js"></script>
     <script src="jquery-1.11.1.min.js"></script>
     <script src="lodash.underscore.min.js"></script>
     <script src="popup.js"></script>
   </head>
   <body>
     <p>GIF ME!!!</p>
-    <form name="input" action="#">
+    <form id="search" action="#">
       <input type="text" name="query" class="text-box">
       <input type="submit" class="button" value="Gif Me!">
       <input id="copy">
     </form>
+   <div class="random-trending">
+     <button class="button trending">Trending Gifs</button>
+     <button class="button random">Random Gif</button>
+   </div>
 
 
     <img class="loading" src="loading.gif">
 
-    <button class="random">Random Gif</button>
-    <ul class="gifs">
+    <ul class="gifs"></ul>
 
-    </ul>
     <img class="giphy" src="Giphy_API_Logo_ForBlack.gif">
+
+
+    <form id="send-to-friend" action="#">
+      <p>Your Gif has been copied! <br> Paste it!</p>
+      <p>Would you like to send it to a friend?</p>
+
+      <input type="email" name="to" class="text-box" placeholder="To">
+      <input type="email" name="from" class="text-box" placeholder="From">
+
+      <input type="submit" class="button" value="Gif Them!">
+
+    </form>
   </body>
 </html>
-
