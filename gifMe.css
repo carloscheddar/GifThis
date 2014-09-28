@@ -11,6 +11,9 @@ p {
   color: white;
 }
 
+body {
+  background: #000;
+}
 
 
 ul {
@@ -51,6 +54,19 @@ form{
 }
 
 .button {
+  background: black;
+  color: #fff;
+  float: right;
+  outline: none;
+  border: solid 1px #fff;
+  height: 29px;
+  width: 30%;
+  position: relative;
+  top: 2px;
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+
+.random {
   background: black;
   color: #fff;
   float: right;
