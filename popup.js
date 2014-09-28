@@ -11,15 +11,12 @@ $(document).ready(function(){
   });
 
   $(".random").on('click',function(){
-    var limit = 6;
-    var xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&limit="+ limit);
+    var xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC");
     xhr.done(function(data) {
-
-      $('.loading').css('display', 'none');
-
       $(".gifs").append('<li><a href="'+ data.data.image_url +'"><img src='+ data.data.image_url +'></img></a></li>');
     });
   });
+
   // Get the search value on submit
   $("form").submit(function(e){
     e.preventDefault();
