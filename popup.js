@@ -1,8 +1,10 @@
 $(document).ready(function(){
   // Open a new tab if the user clicks on an image
-  $('body').on('click', 'a', function(){
-   chrome.tabs.create({url: $(this).attr('href')});
-   return false;
+  $('body').on('click', 'a', function(e){
+    $('#copy').val(e.target.src);
+    $('#copy').focus();
+    $('#copy').select();
+    document.execCommand('Copy');
   });
 
   // Get the search value on submit
