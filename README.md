@@ -9,7 +9,7 @@ Gif This! is a chrome extension that queries the [Giphy API](https://github.com/
 We use gifs everyday to chat with friends, but it was always a hastle to enter a site, search for the gif in said site and then copy the image just so i could send it to friends.<br>
 ![](http://media.giphy.com/media/3uyIgVxP1qAjS/giphy-tumblr.gif)<br>
 
-So then came the idea of making an extention where you can search for a gif and have the link copied directly to your clipboard.
+So then came the idea of making an extention where you can search for a gif and have the link copied directly to your clipboard.<br>
 ![](http://media.giphy.com/media/y2c0Zh26JmOAw/giphy-tumblr.gif)
 
 
