@@ -6,23 +6,34 @@ $(document).ready(function(){
     $('#copy').select();
     document.execCommand('Copy');
 
+    $('body').css('height', '420');
     $('#send-to-friend').css('display', 'block');
 
   });
 
   $(".random").on('click',function(){
-    var limit = 6;
-    var xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&limit="+ limit);
-    xhr.done(function(data) {
+    $('body').css('height', 'auto');
 
+    $('.loading').css('display', 'block');
+
+    // Empty the list on each request
+    $('.gifs').empty();
+
+    var xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC");
+    xhr.done(function(data) {
+      $('#send-to-friend').css('display', 'none');
       $('.loading').css('display', 'none');
 
-      $(".gifs").append('<li><a href="'+ data.data.image_url +'"><img src='+ data.data.image_url +'></img></a></li>');
+      $(".gifs").append('<li class="rand"><a href="'+ data.data.image_url +'"><img src='+ data.data.image_url +'></img></a></li>');
     });
   });
+
+
   // Get the search value on submit
   $("#search").submit(function(e){
     e.preventDefault();
+
+    $('body').css('height', 'auto');
 
     $('.loading').css('display', 'block');
 
@@ -36,6 +47,7 @@ $(document).ready(function(){
     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ query + "&api_key=dc6zaTOxFJmzC&limit="+ limit);
     xhr.done(function(data) {
 
+      $('#send-to-friend').css('display', 'none');
       $('.loading').css('display', 'none');
 
       //Return if result is empty
