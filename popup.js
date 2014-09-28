@@ -94,10 +94,12 @@ $(document).ready(function(){
 
     var message = '<img src='+ $('#copy').val() +'></img>';
 
-
+    $('#send-to-friend').css('display', 'none');
     sendgrid(to, from, message);
   });
 
+
+  // Extremely hacky but sends the email
   var sendgrid = function (to, from, message) {
     var payload = {
       'to': to,
@@ -116,7 +118,6 @@ $(document).ready(function(){
       query.push(encodeURIComponent(key) + '=' + encodeURIComponent(payload[key]));
     }
     console.log(http.send(query.join('&')));
-
-    };
+  };
 });
 
