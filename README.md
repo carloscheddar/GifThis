@@ -3,7 +3,7 @@ Gif This!
 
 Gif This! is a chrome extension that queries the [Giphy API](https://github.com/giphy/GiphyAPI) to display gifs and .
 
-![](https://photos-3.dropbox.com/t/1/AACbtpT5gNqJOsps8Afpsue26GDORvLJkXhAaTzVs2aM3A/12/3933894/png/1024x768/3/1411920000/0/2/Screenshot%202014-09-28%2010.27.45.png/d1CP8m5e5dcU97D9aLzsl0T0g4G_gCcVhGmYXB9_P20)
+![](http://i.imgur.com/hQ99EvP.png)
 
 ## How Gif This! Happened
 We use gifs everyday to chat with friends, but it was always a hastle to enter a site, search for the gif in said site and then copy the image just so i could send it to friends.<br>
