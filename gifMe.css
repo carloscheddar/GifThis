@@ -69,3 +69,13 @@ form{
   background: #fff;
   color: #000;
 }
+
+#copy{
+  position: absolute;
+  top: -500px;
+}
+
+.loading {
+  display: none;
+  margin: 0 auto;
+}

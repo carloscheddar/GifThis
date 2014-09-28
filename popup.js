@@ -1,13 +1,17 @@
 $(document).ready(function(){
   // Open a new tab if the user clicks on an image
-  $('body').on('click', 'a', function(){
-   chrome.tabs.create({url: $(this).attr('href')});
-   return false;
+  $('body').on('click', 'a', function(e){
+    $('#copy').val(e.target.src);
+    $('#copy').focus();
+    $('#copy').select();
+    document.execCommand('Copy');
   });
 
   // Get the search value on submit
   $("form").submit(function(e){
     e.preventDefault();
+
+    $('.loading').css('display', 'block');
 
     // Empty the list on each request
     $('.gifs').empty();
@@ -18,6 +22,9 @@ $(document).ready(function(){
     // Get the gifs from the giphy api
     var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+ query + "&api_key=dc6zaTOxFJmzC&limit="+ limit);
     xhr.done(function(data) {
+
+      $('.loading').css('display', 'none');
+
       //Return if result is empty
       if (data.pagination.count === 0) {
         $(".gifs").append('<li><p>No gif found.</p></li>');
