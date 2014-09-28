@@ -1,10 +1,30 @@
-p{
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+p {
+  text-align: center;
   font-family: 'helvetica';
   color: white;
 }
 
+body {
+  background: #000;
+}
+
+ul {
+  width: 300px;
+  margin: 0 1em;
+  padding: 0;
+}
+
 li {
   list-style-type: none;
+  display: inline-block;
+  width: 150px;
 }
 
 li img{
@@ -17,4 +37,35 @@ li img{
 	right: 0px;
 	width: 50px;
 	height: 25px;
+  margin-bottom: 5px;
+}
+
+form{
+  display: inline-block;
+  width: 300px;
+  margin: 0 1em 1em;
+}
+
+.text-box {
+  width: 68%;
+  font-size: 20px;
+  outline: none;
+}
+
+.button {
+  background: black;
+  color: #fff;
+  float: right;
+  outline: none;
+  border: solid 1px #fff;
+  height: 29px;
+  width: 30%;
+  position: relative;
+  top: 2px;
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
+}
+
+.button:hover{
+  background: #fff;
+  color: #000;
 }
