@@ -28,6 +28,28 @@ $(document).ready(function(){
     });
   });
 
+  $(".trending").on('click',function(){
+    $('body').css('height', 'auto');
+
+    $('.loading').css('display', 'block');
+
+    // Empty the list on each request
+    $('.gifs').empty();
+
+    var limit = 6;
+
+    var xhr = $.get("http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit="+ limit);
+    xhr.done(function(data) {
+      $('#send-to-friend').css('display', 'none');
+      $('.loading').css('display', 'none');
+
+      _.each(data.data, function (gif) {
+        imageUrl = gif.images.downsized.url;
+        $(".gifs").append('<li><a href="'+ gif.url +'"><img src='+ imageUrl +'></img></a></li>');
+      });
+
+    });
+  });
 
   // Get the search value on submit
   $("#search").submit(function(e){
