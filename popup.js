@@ -62,7 +62,7 @@ $(document).ready(function(){
     // Empty the list on each request
     $('.gifs').empty();
 
-    var query = $('form').serializeArray()[0].value;
+    var query = $('#search').serializeArray()[0].value;
     var limit = 6;
 
     // Get the gifs from the giphy api
@@ -83,6 +83,19 @@ $(document).ready(function(){
         $(".gifs").append('<li><a href="'+ gif.url +'"><img src='+ imageUrl +'></img></a></li>');
       });
     });
+  });
+
+  $('#send-to-friend').submit(function (e) {
+    e.preventDefault();
+    var data = $('#send-to-friend').serializeArray();
+
+    var to = data[0].value;
+    var from = data[1].value;
+
+    var message = '<img src='+ $('#copy').val() +'></img>';
+
+
+    sendgrid(to, from, message);
   });
 
   var sendgrid = function (to, from, message) {
