@@ -5,10 +5,15 @@ html {
   box-sizing: inherit;
 }
 
-p {
+p, a {
   text-align: center;
   font-family: 'helvetica';
   color: white;
+}
+
+a:hover {
+  color: #666;
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
 
 body {
@@ -56,26 +61,13 @@ form{
 .button {
   background: black;
   color: #fff;
-  float: right;
+  display: inline-block;
   outline: none;
   border: solid 1px #fff;
   height: 29px;
   width: 30%;
   position: relative;
-  top: 2px;
-  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
-}
-
-.random {
-  background: black;
-  color: #fff;
-  float: right;
-  outline: none;
-  border: solid 1px #fff;
-  height: 29px;
-  width: 30%;
-  position: relative;
-  top: 2px;
+  top: -4px;
   transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
 
@@ -84,12 +76,55 @@ form{
   color: #000;
 }
 
+.random-trending {
+  margin: 0 1em 1em;
+}
+
+.random-trending .button {
+  width: 49%;
+  height: 40px
+}
+
 #copy{
   position: absolute;
   top: -500px;
 }
 
+.rand img {
+  width: 300px
+}
+
 .loading {
   display: none;
   margin: 0 auto;
+}
+
+#send-to-friend{
+  display: none;
+  position: absolute;
+  background: #000;
+  width: 100%;
+  margin: 0;
+  top: 6em;
+  bottom: -1em;
+  right: 0;
+  left: 0;
+  padding: 1em;
+}
+
+#send-to-friend p {
+  font-size: 20px;
+  text-align: center;
+  margin: 1em 2em;
+}
+
+#send-to-friend .text-box {
+  width: 100%;
+  line-height: 2;
+}
+
+#send-to-friend .button {
+  width: 100%;
+  height: 50px;
+  margin-top: 1em;
 }
