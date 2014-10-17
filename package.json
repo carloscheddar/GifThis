@@ -1,0 +1,26 @@
+{
+  "name": "GifThis",
+  "version": "1.0.0",
+  "description": "An extension to easily find gifs and copy them to your clipboard.",
+  "main": "n",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carloscheddar/GifThis.git"
+  },
+  "keywords": [
+    "gif",
+    "gif-this",
+    "giphy"
+  ],
+  "author": "Carlos Feliciano-Barba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carloscheddar/GifThis/issues"
+  },
+  "homepage": "https://github.com/carloscheddar/GifThis",
+  "dependencies": {
+    "gulp": "^3.8.8",
+    "gulp-compass": "*",
+    "gulp-coffee": "*"
+  }
+}

@@ -1,63 +1,84 @@
+/* line 1, ../sass/main.sass */
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+/* line 4, ../sass/main.sass */
+* {
+  box-sizing: inherit;
+}
+/* line 6, ../sass/main.sass */
+*:before, *:after {
   box-sizing: inherit;
 }
 
-p, a {
+/* line 9, ../sass/main.sass */
+p {
   text-align: center;
-  font-family: 'helvetica';
+  font-family: "helvetica";
   color: white;
 }
 
+/* line 14, ../sass/main.sass */
+a {
+  text-align: center;
+  font-family: "helvetica";
+  color: white;
+}
+/* line 18, ../sass/main.sass */
 a:hover {
   color: #666;
   transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
 
+/* line 22, ../sass/main.sass */
 body {
   background: #000;
 }
 
-
+/* line 25, ../sass/main.sass */
 ul {
   width: 300px;
   margin: 0 1em;
   padding: 0;
 }
 
+/* line 30, ../sass/main.sass */
 li {
   list-style-type: none;
   display: inline-block;
   width: 150px;
 }
-
-li img{
-	width:150px;
+/* line 34, ../sass/main.sass */
+li img {
+  width: 150px;
 }
 
+/* line 37, ../sass/main.sass */
 .giphy {
-	float: right;
-	bottom: 0px;
-	right: 0px;
-	width: 50px;
-	height: 25px;
+  float: right;
+  bottom: 0px;
+  right: 0px;
+  width: 50px;
+  height: 25px;
   margin-bottom: 5px;
 }
 
-form{
+/* line 45, ../sass/main.sass */
+form {
   display: inline-block;
   width: 300px;
   margin: 0 1em 1em;
 }
 
+/* line 50, ../sass/main.sass */
 .text-box {
   width: 68%;
   font-size: 20px;
   outline: none;
 }
 
+/* line 55, ../sass/main.sass */
 .button {
   background: black;
   color: #fff;
@@ -70,36 +91,41 @@ form{
   top: -4px;
   transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
-
-.button:hover{
+/* line 66, ../sass/main.sass */
+.button:hover {
   background: #fff;
   color: #000;
 }
 
+/* line 70, ../sass/main.sass */
 .random-trending {
   margin: 0 1em 1em;
 }
-
+/* line 72, ../sass/main.sass */
 .random-trending .button {
   width: 49%;
-  height: 40px
+  height: 40px;
 }
 
-#copy{
+/* line 76, ../sass/main.sass */
+#copy {
   position: absolute;
   top: -500px;
 }
 
+/* line 80, ../sass/main.sass */
 .rand img {
-  width: 300px
+  width: 300px;
 }
 
+/* line 83, ../sass/main.sass */
 .loading {
   display: none;
   margin: 0 auto;
 }
 
-#send-to-friend{
+/* line 87, ../sass/main.sass */
+#send-to-friend {
   display: none;
   position: absolute;
   background: #000;
@@ -111,18 +137,18 @@ form{
   left: 0;
   padding: 1em;
 }
-
+/* line 98, ../sass/main.sass */
 #send-to-friend p {
   font-size: 20px;
   text-align: center;
   margin: 1em 2em;
 }
-
+/* line 102, ../sass/main.sass */
 #send-to-friend .text-box {
   width: 100%;
   line-height: 2;
 }
-
+/* line 105, ../sass/main.sass */
 #send-to-friend .button {
   width: 100%;
   height: 50px;
