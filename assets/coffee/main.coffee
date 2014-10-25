@@ -1,77 +1,54 @@
-$(document).ready ->
+makeItemElem= (data, container, fragment) ->
 
-  # Open a new tab if the user clicks on an image
-  $("body").on "click", "ul a", (e) ->
-    $("#copy").val e.target.src
-    $("#copy").focus()
-    $("#copy").select()
-    document.execCommand "Copy"
-    return
+  item = document.createElement("div")
+  item.className = "item is-hidden"
+  img = document.createElement("img")
 
-  $(".random").on "click", ->
-    $("body").css "height", "auto"
-    $(".loading").css "display", "block"
-
-    # Empty the list on each request
-    $(".gifs").empty()
-    xhr = $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC")
-    xhr.done (data) ->
-      $("#send-to-friend").css "display", "none"
-      $(".loading").css "display", "none"
-      $(".gifs").append "<li class=\"rand\"><a href=\"" + data.data.image_url + "\"><img src=" + data.data.image_url + "></img></a></li>"
-      return
-
-    return
-
-  $(".trending").on "click", ->
-    $("body").css "height", "auto"
-    $(".loading").css "display", "block"
-
-    # Empty the list on each request
-    $(".gifs").empty()
-    limit = 6
-    xhr = $.get("http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=" + limit)
-    xhr.done (data) ->
-      $("#send-to-friend").css "display", "none"
-      $(".loading").css "display", "none"
-      _.each data.data, (gif) ->
-        imageUrl = gif.images.downsized.url
-        $(".gifs").append "<li><a href=\"" + gif.url + "\"><img src=" + imageUrl + "></img></a></li>"
-        return
-
-      return
-
-    return
+  console.log data
+  img.src = data.data.image_url
+  item.appendChild img
+  fragment.appendChild item
+  container.appendChild fragment
 
 
-  # Get the search value on submit
-  $("#search").submit (e) ->
-    e.preventDefault()
-    $("body").css "height", "auto"
-    $(".loading").css "display", "block"
+createItems = (results, container) ->
+  fragment = document.createDocumentFragment()
+  _.each results, (response) ->
+    item = document.createElement("div")
+    item.className = "item is-hidden"
+    img = document.createElement("img")
 
-    # Empty the list on each request
-    $(".gifs").empty()
-    query = $("#search").serializeArray()[0].value
-    limit = 6
+    console.log response
+    img.src = response.data.image_url
+    item.appendChild img
+    fragment.appendChild item
+    container.appendChild fragment
 
-    # Get the gifs from the giphy api
-    xhr = $.get("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=" + limit)
-    xhr.done (data) ->
-      $("#send-to-friend").css "display", "none"
-      $(".loading").css "display", "none"
 
-      #Return if result is empty
-      if data.pagination.count is 0
-        $(".gifs").append "<li><p>No gif found.</p></li>"
-        return
-      _.each data.data, (gif) ->
-        imageUrl = gif.images.downsized.url
-        $(".gifs").append "<li><a href=\"" + gif.url + "\"><img src=" + imageUrl + "></img></a></li>"
-        return
+docReady ->
+  results = {}
+  container = document.querySelector("#container")
 
-      return
+  promise = $.when _.times 20, (n) ->
+    $.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC")
+    .done (data) ->
+      results[n] = data
 
-    return
 
-  return
+  promise.done (data) ->
+    $.when.apply($, data).done ->
+      createItems results, container
+      imgLoad = imagesLoaded(container)
+      imgLoad.on "progress", (imgLoad, image) ->
+        return  unless image.isLoaded
+        itemElem = image.img.parentNode
+        classie.remove itemElem, "is-hidden"
+        pckry.appended itemElem
+        pckry.layout()
+
+  pckry = new Packery(container,
+    itemSelector: ".item"
+    gutter: 2,
+    "columnWidth": 196,
+  )
+
