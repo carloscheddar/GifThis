@@ -9,35 +9,25 @@
     <script src="assets/js/libs/imagesloaded.pkgd.min.js"></script>
     <script src="assets/js/libs/packery.pkgd.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <style type="text/css">
-
-      body {
-        width: 600px;
-      }
-
-      .item {
-        float: left;
-      }
-
-      .item img {
-        display: block;
-        width: 196px;
-      }
-
-      .is-hidden { display: none; }
-
-    </style>
-
   </head>
 
   <body>
+    <p>Your gif journey starts here.</p>
+    <form id="search" action="#">
+      <input type="text" name="query" class="text-box">
+      <input type="submit" class="button" value="Gif This!">
+      <!-- <input id="copy"> -->
+    </form>
 
-<h1>Post Hackathon Update</h1>
-<div class="grid-sizer"></div>
+    <div class="random-trending">
+     <button class="button trending">Trending Gifs</button>
+     <button class="button random">Random Gif</button>
+    </div>
 
-<div id="container">
-</div>
+    <img class="loading is-hidden" src="assets/images/loading.gif">
+
+    <div id="container">
+    </div>
 
   </body>
 </html>
