@@ -1,0 +1,93 @@
+html
+  box-sizing: border-box
+
+*
+  box-sizing: inherit
+  &:before, &:after
+    box-sizing: inherit
+
+body
+  width: 440px
+  background: black
+
+#container
+  margin: 0 1em
+
+  .item
+    float: left
+    width: 137px
+
+  .item img
+    display: block
+    width: 100%
+
+.loading
+  margin: 0 auto
+  display: block
+
+.is-hidden
+  display: none
+
+.not-found
+  width: 100% !important
+
+p
+  text-align: center
+  font-family: 'helvetica'
+  color: white
+
+.giphy
+  float: right
+  bottom: 0px
+  right: 0px
+  width: 50px
+  height: 25px
+  margin-top: 5px
+  margin-bottom: 5px
+
+form
+  display: inline-block
+  width: 450px
+  margin: 0 1em 1em
+
+.text-box
+  width: 310px
+  font-size: 20px
+  outline: none
+  height: 40px
+
+.button
+  background: black
+  color: #fff
+  display: inline-block
+  outline: none
+  border: solid 1px #fff
+  height: 40px
+  width: 100px
+  position: relative
+  top: -3px
+  transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear
+  &:hover
+    background: #fff
+    color: #000
+
+.random-trending
+  margin: 0 1em 1em
+  .button
+    width: 205px
+
+#big
+  img
+    display: block
+    margin: 0 auto
+    width: 400px
+  .back
+    text-align: center
+    color: #fff
+    display: block
+    font-family: sans-serif
+    margin-bottom: 1em
+
+#copy
+  position: absolute
+  top: -500px
