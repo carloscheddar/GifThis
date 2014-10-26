@@ -1,4 +1,4 @@
-var Loading, createItems, getQuery, getRandom, getTrending, loadImages, randomItems, removeItems;
+var Loading, createItems, getQuery, getRandom, getTrending, hideBig, loadImages, randomItems, removeItems;
 
 Loading = {
   show: function() {
@@ -27,6 +27,11 @@ loadImages = function($container) {
 
 removeItems = function() {
   return $('.item').remove().promise();
+};
+
+hideBig = function() {
+  $("#container").removeClass('is-hidden');
+  return $('#big').addClass('is-hidden');
 };
 
 createItems = function(results, container) {
@@ -89,16 +94,19 @@ docReady(function() {
   var $container;
   $container = $('#container');
   $('.trending').on('click', function() {
+    hideBig();
     removeItems();
     Loading.show();
     return getTrending($container);
   });
   $('.random').on('click', function() {
+    hideBig();
     removeItems();
     Loading.show();
     return getRandom($container);
   });
   $('#search').on('submit', function(e) {
+    hideBig();
     e.preventDefault();
     removeItems();
     Loading.show();
@@ -117,8 +125,7 @@ docReady(function() {
     return $('<img src="' + url + '">').appendTo('#big');
   });
   $('.back').on('click', function(e) {
-    $("#container").removeClass('is-hidden');
-    $('#big').addClass('is-hidden');
+    hideBig();
     return $('#container').packery();
   });
   return $container.packery({

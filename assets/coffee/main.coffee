@@ -20,6 +20,10 @@ loadImages= ($container)->
 removeItems= ->
   $('.item').remove().promise()
 
+hideBig= ->
+  $("#container").removeClass('is-hidden')
+  $('#big').addClass('is-hidden')
+
 # Appends images to the container
 createItems = (results, container) ->
   fragment = document.createDocumentFragment()
@@ -79,16 +83,19 @@ docReady ->
   $container = $('#container')
 
   $('.trending').on 'click', ->
+    hideBig()
     removeItems()
     Loading.show()
     getTrending($container)
 
   $('.random').on 'click', ->
+    hideBig()
     removeItems()
     Loading.show()
     getRandom($container)
 
   $('#search').on 'submit', (e)->
+    hideBig()
     e.preventDefault()
     removeItems()
     Loading.show()
@@ -115,8 +122,7 @@ docReady ->
 
   # Go back to the results container
   $('.back').on 'click', (e) ->
-    $("#container").removeClass('is-hidden')
-    $('#big').addClass('is-hidden')
+    hideBig()
     $('#container').packery()
 
   # Load packery
