@@ -29,34 +29,35 @@ body {
 }
 /* line 20, ../sass/main.sass */
 #container .item img {
+  cursor: pointer;
   display: block;
   width: 100%;
 }
 
-/* line 24, ../sass/main.sass */
+/* line 25, ../sass/main.sass */
 .loading {
   margin: 0 auto;
   display: block;
 }
 
-/* line 28, ../sass/main.sass */
+/* line 29, ../sass/main.sass */
 .is-hidden {
   display: none;
 }
 
-/* line 31, ../sass/main.sass */
+/* line 32, ../sass/main.sass */
 .not-found {
   width: 100% !important;
 }
 
-/* line 34, ../sass/main.sass */
+/* line 35, ../sass/main.sass */
 p {
   text-align: center;
   font-family: "helvetica";
   color: white;
 }
 
-/* line 39, ../sass/main.sass */
+/* line 40, ../sass/main.sass */
 .giphy {
   float: right;
   bottom: 0px;
@@ -67,14 +68,14 @@ p {
   margin-bottom: 5px;
 }
 
-/* line 48, ../sass/main.sass */
+/* line 49, ../sass/main.sass */
 form {
   display: inline-block;
   width: 450px;
   margin: 0 1em 1em;
 }
 
-/* line 53, ../sass/main.sass */
+/* line 54, ../sass/main.sass */
 .text-box {
   width: 310px;
   font-size: 20px;
@@ -82,7 +83,7 @@ form {
   height: 40px;
 }
 
-/* line 59, ../sass/main.sass */
+/* line 60, ../sass/main.sass */
 .button {
   background: black;
   color: white;
@@ -95,28 +96,28 @@ form {
   top: -3px;
   transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
-/* line 70, ../sass/main.sass */
+/* line 71, ../sass/main.sass */
 .button:hover {
   background: white;
   color: black;
 }
 
-/* line 74, ../sass/main.sass */
+/* line 75, ../sass/main.sass */
 .random-trending {
   margin: 0 1em 1em;
 }
-/* line 76, ../sass/main.sass */
+/* line 77, ../sass/main.sass */
 .random-trending .button {
   width: 205px;
 }
 
-/* line 80, ../sass/main.sass */
+/* line 81, ../sass/main.sass */
 #big img {
   display: block;
   margin: 0 auto;
   width: 400px;
 }
-/* line 84, ../sass/main.sass */
+/* line 85, ../sass/main.sass */
 #big .back {
   text-align: center;
   color: white;
@@ -125,7 +126,7 @@ form {
   margin-bottom: 1em;
 }
 
-/* line 91, ../sass/main.sass */
+/* line 92, ../sass/main.sass */
 #copy {
   position: absolute;
   top: -500px;
