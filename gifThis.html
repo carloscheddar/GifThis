@@ -6,26 +6,35 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/libs/jquery-1.11.1.min.js"></script>
     <script src="assets/js/libs/lodash.underscore.min.js"></script>
+    <script src="assets/js/libs/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/libs/packery.pkgd.min.js"></script>
     <script src="assets/js/main.js"></script>
   </head>
 
   <body>
-    <p>Your gif journey starts here.</p>
-    <form id="search" action="#">
-      <input type="text" name="query" class="text-box">
-      <input type="submit" class="button" value="Gif This!">
-      <input id="copy">
-    </form>
+    <div id="inputs">
+      <p>Your gif journey starts here.</p>
+      <form id="search" action="#">
+        <input type="text" name="query" class="text-box">
+        <input type="submit" class="button" value="Gif This!">
+        <!-- <input id="copy"> -->
+      </form>
 
-    <div class="random-trending">
-     <button class="button trending">Trending Gifs</button>
-     <button class="button random">Random Gif</button>
+      <div class="random-trending">
+       <button class="button trending">Trending Gifs</button>
+       <button class="button random">Random Gif</button>
+      </div>
+    </div>
+    <img class="loading is-hidden" src="assets/images/loading.gif">
+
+    <div id="container">
     </div>
 
-    <img class="loading" src="assets/images/loading.gif">
+    <input id="copy">
 
-    <ul class="gifs"></ul>
-
-    <img class="giphy" src="assets/images/Giphy_API_Logo_ForBlack.gif">
+    <div id="big" class="is-hidden">
+      <a class="back" href="#">Show me the other gifs</a>
+      <p>GIF copied! Paste it anywhere!</p>
+    </div>
   </body>
 </html>

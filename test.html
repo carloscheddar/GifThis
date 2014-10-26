@@ -12,22 +12,28 @@
   </head>
 
   <body>
-    <p>Your gif journey starts here.</p>
-    <form id="search" action="#">
-      <input type="text" name="query" class="text-box">
-      <input type="submit" class="button" value="Gif This!">
-      <!-- <input id="copy"> -->
-    </form>
+    <div id="inputs">
+      <p>Your gif journey starts here.</p>
+      <form id="search" action="#">
+        <input type="text" name="query" class="text-box">
+        <input type="submit" class="button" value="Gif This!">
+      </form>
 
-    <div class="random-trending">
-     <button class="button trending">Trending Gifs</button>
-     <button class="button random">Random Gif</button>
+      <div class="random-trending">
+       <button class="button trending">Trending Gifs</button>
+       <button class="button random">Random Gif</button>
+      </div>
     </div>
-
     <img class="loading is-hidden" src="assets/images/loading.gif">
 
     <div id="container">
     </div>
 
+    <input id="copy">
+
+    <div id="big" class="is-hidden">
+      <a class="back" href="#">Show me the other gifs</a>
+      <p>GIF copied! Paste it anywhere!</p>
+    </div>
   </body>
 </html>
