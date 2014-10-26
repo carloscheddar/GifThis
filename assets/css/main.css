@@ -56,14 +56,25 @@ p {
   color: white;
 }
 
-/* line 47, ../sass/main.sass */
+/* line 39, ../sass/main.sass */
+.giphy {
+  float: right;
+  bottom: 0px;
+  right: 0px;
+  width: 50px;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 48, ../sass/main.sass */
 form {
   display: inline-block;
   width: 450px;
   margin: 0 1em 1em;
 }
 
-/* line 52, ../sass/main.sass */
+/* line 53, ../sass/main.sass */
 .text-box {
   width: 310px;
   font-size: 20px;
@@ -71,7 +82,7 @@ form {
   height: 40px;
 }
 
-/* line 58, ../sass/main.sass */
+/* line 59, ../sass/main.sass */
 .button {
   background: black;
   color: white;
@@ -84,28 +95,28 @@ form {
   top: -3px;
   transition: border 0.25s linear, color 0.25s linear, background-color 0.25s linear;
 }
-/* line 69, ../sass/main.sass */
+/* line 70, ../sass/main.sass */
 .button:hover {
   background: white;
   color: black;
 }
 
-/* line 73, ../sass/main.sass */
+/* line 74, ../sass/main.sass */
 .random-trending {
   margin: 0 1em 1em;
 }
-/* line 75, ../sass/main.sass */
+/* line 76, ../sass/main.sass */
 .random-trending .button {
   width: 205px;
 }
 
-/* line 79, ../sass/main.sass */
+/* line 80, ../sass/main.sass */
 #big img {
   display: block;
   margin: 0 auto;
   width: 400px;
 }
-/* line 83, ../sass/main.sass */
+/* line 84, ../sass/main.sass */
 #big .back {
   text-align: center;
   color: white;
@@ -114,7 +125,7 @@ form {
   margin-bottom: 1em;
 }
 
-/* line 90, ../sass/main.sass */
+/* line 91, ../sass/main.sass */
 #copy {
   position: absolute;
   top: -500px;
