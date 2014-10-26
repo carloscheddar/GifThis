@@ -65,6 +65,11 @@ getQuery = ($container) ->
   query = $('#search').serializeArray()[0].value
   $.get("http://api.giphy.com/v1/gifs/search?q="+ query + "&api_key=dc6zaTOxFJmzC&limit="+ limit)
   .done (results) ->
+    if results.pagination.count is 0
+      Loading.hide()
+      $container.append('<div class="item not-found"><p>No Gif Found.</p></div>')
+      return
+
     createItems results.data, $container
     loadImages($container)
 

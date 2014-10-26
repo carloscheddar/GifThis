@@ -75,6 +75,11 @@ getQuery = function($container) {
   limit = 25;
   query = $('#search').serializeArray()[0].value;
   return $.get("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=" + limit).done(function(results) {
+    if (results.pagination.count === 0) {
+      Loading.hide();
+      $container.append('<div class="item not-found"><p>No Gif Found.</p></div>');
+      return;
+    }
     createItems(results.data, $container);
     return loadImages($container);
   });
