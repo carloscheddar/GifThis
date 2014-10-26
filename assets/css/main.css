@@ -13,7 +13,7 @@ html {
 }
 /* line 9, ../sass/main.sass */
 * body {
-  width: 450px;
+  width: 440px;
   background: black;
 }
 /* line 13, ../sass/main.sass */
@@ -88,4 +88,25 @@ form {
 /* line 72, ../sass/main.sass */
 .random-trending .button {
   width: 205px;
+}
+
+/* line 76, ../sass/main.sass */
+#big img {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+}
+/* line 80, ../sass/main.sass */
+#big .back {
+  text-align: center;
+  color: white;
+  display: block;
+  font-family: sans-serif;
+  margin-bottom: 1em;
+}
+
+/* line 87, ../sass/main.sass */
+#copy {
+  position: absolute;
+  top: -500px;
 }
