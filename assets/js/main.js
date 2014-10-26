@@ -1,4 +1,4 @@
-var Loading, createItems, getRandom, getTrending, loadImages, randomItems, removeItems;
+var Loading, createItems, getQuery, getRandom, getTrending, loadImages, randomItems, removeItems;
 
 Loading = {
   show: function() {
@@ -33,14 +33,7 @@ createItems = function(results, container) {
   var fragment;
   fragment = document.createDocumentFragment();
   return _.each(results, function(data) {
-    var img, item;
-    item = document.createElement("div");
-    item.className = "item is-hidden";
-    img = document.createElement("img");
-    img.src = data.images.downsized.url;
-    item.appendChild(img);
-    fragment.appendChild(item);
-    return container.append(fragment);
+    return $('<div class="item is-hidden"><img src="' + data.images.downsized.url + '"></div>').data("url", data.images.original.url).appendTo('#container');
   });
 };
 
@@ -48,14 +41,7 @@ randomItems = function(results, container) {
   var fragment;
   fragment = document.createDocumentFragment();
   return _.each(results, function(response) {
-    var img, item;
-    item = document.createElement("div");
-    item.className = "item is-hidden";
-    img = document.createElement("img");
-    img.src = response.data.image_url;
-    item.appendChild(img);
-    fragment.appendChild(item);
-    return container.append(fragment);
+    return $('<div class="item is-hidden"><img src="' + response.data.fixed_width_downsampled_url + '"></div>').data("url", response.data.image_url).appendTo('#container');
   });
 };
 
@@ -84,6 +70,16 @@ getRandom = function($container) {
   });
 };
 
+getQuery = function($container) {
+  var limit, query;
+  limit = 25;
+  query = $('#search').serializeArray()[0].value;
+  return $.get("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC&limit=" + limit).done(function(results) {
+    createItems(results.data, $container);
+    return loadImages($container);
+  });
+};
+
 docReady(function() {
   var $container;
   $container = $('#container');
@@ -96,6 +92,29 @@ docReady(function() {
     removeItems();
     Loading.show();
     return getRandom($container);
+  });
+  $('#search').on('submit', function(e) {
+    e.preventDefault();
+    removeItems();
+    Loading.show();
+    return getQuery($container);
+  });
+  $('#container').on('click', '.item', function(e) {
+    var url;
+    $('#big img').remove();
+    url = $(e.target).parent().data().url;
+    $("#container").addClass('is-hidden');
+    $('#big').removeClass('is-hidden');
+    $('#copy').val(url);
+    $('#copy').focus();
+    $('#copy').select();
+    document.execCommand('Copy');
+    return $('<img src="' + url + '">').appendTo('#big');
+  });
+  $('.back').on('click', function(e) {
+    $("#container").removeClass('is-hidden');
+    $('#big').addClass('is-hidden');
+    return $('#container').packery();
   });
   return $container.packery({
     itemSelector: ".item",
