@@ -116,12 +116,12 @@ addFavorite = function(url) {
     var favorites = content;
     if (!favorites) {
       storageArea.set(favorite, function() {
-        console.log('favorite saved');
+        console.log('Favorite saved');
       });
     } else {
       content[url] = url;
       storageArea.set(content, function() {
-        console.log('favorite saved');
+        console.log('Favorite saved');
       });
     }
   });
@@ -159,7 +159,7 @@ docReady(function() {
     Loading.show();
     return getQuery($container);
   });
-  $('#container').on('click', '.item', function(e) {
+  $('#container').on('click', 'img', function(e) {
     var url;
     $('#big img').remove();
     url = $(e.target).parent().data().url;
@@ -179,13 +179,10 @@ docReady(function() {
     addFavorite($('#big img').attr('src'));
   });
   $('#container').on('click', '#delete', function(e) {
-    debugger;
     var url = $(this).next().attr('src');
     removeFavorite(url);
-    // $('.back').on('click', function(e) {
-    //   hideBig();
-    //   $('.favorites').click();
-    // });
+    $(this).parent().remove();
+    $('.favorites').click();
   });
   return $container.packery({
     itemSelector: ".item",
