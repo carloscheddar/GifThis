@@ -1,4 +1,7 @@
-var Loading, createItems, getQuery, getRandom, getTrending, hideBig, loadImages, randomItems, removeItems, addFavorite, getFavorites, favoriteItems;
+var Loading, createItems, getQuery, getRandom,
+getTrending, hideBig, loadImages, randomItems,
+removeItems, addFavorite, getFavorites,
+favoriteItems, removeFavorite;
 var storageArea = chrome.storage.sync;
 Loading = {
   show: function() {
@@ -54,7 +57,7 @@ favoriteItems = function(results, container) {
   var fragment;
   fragment = document.createDocumentFragment();
   return _.each(results, function(url) {
-    return $('<div class="item is-hidden"><img src="' + url + '"></div>').data("url", url).appendTo('#container');
+    return $('<div class="item is-hidden"><span id="delete">x</span><img src="' + url + '"></div>').data("url", url).appendTo('#container');
   });
 };
 
@@ -85,7 +88,7 @@ getRandom = function($container) {
 
 getFavorites = function($container) {
   storageArea.get(null, function(content) {
-    favoriteItems(content.favorites, $container);
+    favoriteItems(content, $container);
     return loadImages($container);
   });
 };
@@ -106,16 +109,17 @@ getQuery = function($container) {
 };
 
 addFavorite = function(url) {
-  // var favorite = '<div class="item is-hidden"><img src="' + url+ '"></div>';
-  var favorite = url;
+  var key = url;
+  var favorite = {};
+  favorite[key] = url;
   storageArea.get(null, function(content) {
-    var favorites = content.favorites;
+    var favorites = content;
     if (!favorites) {
-      storageArea.set({ 'favorites': [favorite] }, function() {
+      storageArea.set(favorite, function() {
         console.log('favorite saved');
       });
     } else {
-      content.favorites.push(favorite);
+      content[url] = url;
       storageArea.set(content, function() {
         console.log('favorite saved');
       });
@@ -123,6 +127,9 @@ addFavorite = function(url) {
   });
 };
 
+removeFavorite = function(key) {
+  storageArea.remove(key);
+};
 
 docReady(function() {
   var $container;
@@ -170,6 +177,15 @@ docReady(function() {
   });
   $('.favorite').on('click', function(e) {
     addFavorite($('#big img').attr('src'));
+  });
+  $('#container').on('click', '#delete', function(e) {
+    debugger;
+    var url = $(this).next().attr('src');
+    removeFavorite(url);
+    // $('.back').on('click', function(e) {
+    //   hideBig();
+    //   $('.favorites').click();
+    // });
   });
   return $container.packery({
     itemSelector: ".item",

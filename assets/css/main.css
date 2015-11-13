@@ -108,7 +108,7 @@ form {
 }
 /* line 77, ../sass/main.sass */
 .random-trending .button {
-  width: 205px;
+  width: 136px;
 }
 
 /* line 81, ../sass/main.sass */
@@ -139,4 +139,24 @@ form {
 #copy {
   position: absolute;
   top: -500px;
+}
+
+/* line 102, ../sass/main.sass */
+#delete {
+  float: right;
+  display: inline-block;
+  padding: 2px 5px;
+  background: black;
+  margin-bottom: -18px;
+  position: relative;
+  color: white;
+}
+
+#delete:hover {
+  float: right;
+  display: inline-block;
+  padding: 2px 5px;
+  background: white;
+  color: black;
+  cursor: pointer;
 }
