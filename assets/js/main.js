@@ -1,5 +1,5 @@
-var Loading, createItems, getQuery, getRandom, getTrending, hideBig, loadImages, randomItems, removeItems;
-
+var Loading, createItems, getQuery, getRandom, getTrending, hideBig, loadImages, randomItems, removeItems, addFavorite, getFavorites, favoriteItems;
+var storageArea = chrome.storage.sync;
 Loading = {
   show: function() {
     return $(".loading").removeClass("is-hidden");
@@ -50,6 +50,14 @@ randomItems = function(results, container) {
   });
 };
 
+favoriteItems = function(results, container) {
+  var fragment;
+  fragment = document.createDocumentFragment();
+  return _.each(results, function(url) {
+    return $('<div class="item is-hidden"><img src="' + url + '"></div>').data("url", url).appendTo('#container');
+  });
+};
+
 getTrending = function($container) {
   var limit;
   limit = 25;
@@ -75,6 +83,13 @@ getRandom = function($container) {
   });
 };
 
+getFavorites = function($container) {
+  storageArea.get(null, function(content) {
+    favoriteItems(content.favorites, $container);
+    return loadImages($container);
+  });
+};
+
 getQuery = function($container) {
   var limit, query;
   limit = 25;
@@ -90,6 +105,25 @@ getQuery = function($container) {
   });
 };
 
+addFavorite = function(url) {
+  // var favorite = '<div class="item is-hidden"><img src="' + url+ '"></div>';
+  var favorite = url;
+  storageArea.get(null, function(content) {
+    var favorites = content.favorites;
+    if (!favorites) {
+      storageArea.set({ 'favorites': [favorite] }, function() {
+        console.log('favorite saved');
+      });
+    } else {
+      content.favorites.push(favorite);
+      storageArea.set(content, function() {
+        console.log('favorite saved');
+      });
+    }
+  });
+};
+
+
 docReady(function() {
   var $container;
   $container = $('#container');
@@ -104,6 +138,12 @@ docReady(function() {
     removeItems();
     Loading.show();
     return getRandom($container);
+  });
+  $('.favorites').on('click', function() {
+    hideBig();
+    removeItems();
+    Loading.show();
+    return getFavorites($container);
   });
   $('#search').on('submit', function(e) {
     hideBig();
@@ -127,6 +167,9 @@ docReady(function() {
   $('.back').on('click', function(e) {
     hideBig();
     return $('#container').packery();
+  });
+  $('.favorite').on('click', function(e) {
+    addFavorite($('#big img').attr('src'));
   });
   return $container.packery({
     itemSelector: ".item",

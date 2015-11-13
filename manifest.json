@@ -9,7 +9,10 @@
     "default_icon": "icon.png",
     "default_popup": "gifThis.html"
   },
-  "permissions":["clipboardWrite"],
+  "permissions":[
+    "clipboardWrite",
+    "storage"
+  ],
 
   "icons": {
     "16": "icon16.png",

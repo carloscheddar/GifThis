@@ -126,7 +126,16 @@ form {
   margin-bottom: 1em;
 }
 
-/* line 92, ../sass/main.sass */
+/* line 91, ../sass/main.sass*/
+#big .favorite {
+  text-align: center;
+  color: white;
+  display: block;
+  font-family: sans-serif;
+  margin-bottom: 1em;
+}
+
+/* line 98, ../sass/main.sass */
 #copy {
   position: absolute;
   top: -500px;
