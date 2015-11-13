@@ -116,12 +116,12 @@ addFavorite = function(url) {
     var favorites = content;
     if (!favorites) {
       storageArea.set(favorite, function() {
-        console.log('Favorite saved');
+        $('.favorite').text("Added to favorites");
       });
     } else {
       content[url] = url;
       storageArea.set(content, function() {
-        console.log('Favorite saved');
+        $('.favorite').text("Added to favorites");
       });
     }
   });
@@ -173,6 +173,7 @@ docReady(function() {
   });
   $('.back').on('click', function(e) {
     hideBig();
+    $('.favorite').text("Add to Favorites");
     return $('#container').packery();
   });
   $('.favorite').on('click', function(e) {
