@@ -1,5 +1,8 @@
-var Loading, createItems, getQuery, getRandom, getTrending, hideBig, loadImages, randomItems, removeItems;
-
+var Loading, createItems, getQuery, getRandom,
+getTrending, hideBig, loadImages, randomItems,
+removeItems, addFavorite, getFavorites,
+favoriteItems, removeFavorite;
+var storageArea = chrome.storage.sync;
 Loading = {
   show: function() {
     return $(".loading").removeClass("is-hidden");
@@ -50,6 +53,14 @@ randomItems = function(results, container) {
   });
 };
 
+favoriteItems = function(results, container) {
+  var fragment;
+  fragment = document.createDocumentFragment();
+  return _.each(results, function(url) {
+    return $('<div class="item is-hidden"><span id="delete">x</span><img src="' + url + '"></div>').data("url", url).appendTo('#container');
+  });
+};
+
 getTrending = function($container) {
   var limit;
   limit = 25;
@@ -75,6 +86,13 @@ getRandom = function($container) {
   });
 };
 
+getFavorites = function($container) {
+  storageArea.get(null, function(content) {
+    favoriteItems(content, $container);
+    return loadImages($container);
+  });
+};
+
 getQuery = function($container) {
   var limit, query;
   limit = 25;
@@ -88,6 +106,29 @@ getQuery = function($container) {
     createItems(results.data, $container);
     return loadImages($container);
   });
+};
+
+addFavorite = function(url) {
+  var key = url;
+  var favorite = {};
+  favorite[key] = url;
+  storageArea.get(null, function(content) {
+    var favorites = content;
+    if (!favorites) {
+      storageArea.set(favorite, function() {
+        $('.favorite').text("Added to favorites");
+      });
+    } else {
+      content[url] = url;
+      storageArea.set(content, function() {
+        $('.favorite').text("Added to favorites");
+      });
+    }
+  });
+};
+
+removeFavorite = function(key) {
+  storageArea.remove(key);
 };
 
 docReady(function() {
@@ -105,6 +146,12 @@ docReady(function() {
     Loading.show();
     return getRandom($container);
   });
+  $('.favorites').on('click', function() {
+    hideBig();
+    removeItems();
+    Loading.show();
+    return getFavorites($container);
+  });
   $('#search').on('submit', function(e) {
     hideBig();
     e.preventDefault();
@@ -112,7 +159,7 @@ docReady(function() {
     Loading.show();
     return getQuery($container);
   });
-  $('#container').on('click', '.item', function(e) {
+  $('#container').on('click', 'img', function(e) {
     var url;
     $('#big img').remove();
     url = $(e.target).parent().data().url;
@@ -126,7 +173,17 @@ docReady(function() {
   });
   $('.back').on('click', function(e) {
     hideBig();
+    $('.favorite').text("Add to Favorites");
     return $('#container').packery();
+  });
+  $('.favorite').on('click', function(e) {
+    addFavorite($('#big img').attr('src'));
+  });
+  $('#container').on('click', '#delete', function(e) {
+    var url = $(this).next().attr('src');
+    removeFavorite(url);
+    $(this).parent().remove();
+    $('.favorites').click();
   });
   return $container.packery({
     itemSelector: ".item",
